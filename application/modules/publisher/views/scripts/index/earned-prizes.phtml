@@ -1,0 +1,31 @@
+
+<div class="row-fluid">
+	<h2><?php echo $this->tlt("Earned prizes").":"?></h2>
+</div>
+<div class="row-fluid">
+	<?php if(count($this->prizes)){?>
+		<?php foreach($this->prizes as $prize) {?>
+			<div class="row-fluid">
+				<div class="span12 well">
+					<div class="row-fluid">						
+						<div class="span3">
+							<a target="_blank" class="thumbnail" href="#">
+								<img src="<?php echo $this->src($prize->images_url.'/150x150/'.@$prize->images[0]->file_name, '150x150', "owned-item.gif")?>"
+								 alt="" 
+								 />
+							</a>
+						</div>
+						<div class="span9">
+							<a href="/advertiser/index/prize/id/<?php echo $prize->id?>"><h3><?php echo $prize->name?></h3></a>
+							<h4><?php echo $this->tlt("Credits spent").' :<b>'.$prize->cost."</b>"?></h4>
+							<h4><?php echo $this->tlt("Earned on").' :<b>'.$prize->earn_date."</b>"?></h4>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		<?php }?>
+	<?php }else{?>
+		<div class="alert alert-info"><?php echo $this->tlt("You have earned no prizes")?></div>
+	<?php }?>
+</div>

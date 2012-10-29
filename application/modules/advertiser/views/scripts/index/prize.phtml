@@ -1,0 +1,19 @@
+<?php if(@$this->images){?>
+<div class="row-fluid">
+	<div class="span3">
+		<a target="_blank" class="thumbnail" href="#">
+			<img src="<?php echo $this->src($this->images_url.'/150x150/'.@$this->images[0]->file_name, '150x150', "owned-item.gif")?>"
+			 alt="" 
+			 />
+		</a>
+		<a href="/advertiser/index/delete-image/prize_id/<?php echo $this->prize->id?>"><?php echo $this->tlt("delete")?></a>		
+	</div>
+</div>
+<?php }?>
+<br />
+<div class="row-fluid">
+	<div class="span6">
+		<?php echo $this->form ?>
+		<a href="/advertiser/index/prizes"><?php echo $this->tlt("Back")?></a>
+	</div>
+</div>

@@ -1,0 +1,83 @@
+<div class="row-fluid">
+	<div class="span5">
+		<h4><?php echo $this->tlt("Available campaigns").": "?></h4>
+	</div>
+	<div class="span7">
+		<form method="GET" action="#">
+			<span><?php echo $this->tlt("Start date")?></span>
+			<input style="margin-top:10px"  name="date_start" type="text" value="<?php echo @$_GET['date_start'] ? $_GET['date_start'] :date("Y-m-d", time() - 3600*24*4)?>" />
+			<span><?php echo $this->tlt("End date")?></span>
+			<input style="margin-top:10px"  name="date_end" type="text" value="<?php echo @$_GET['date_end'] ? $_GET['date_end'] :date("Y-m-d", time())?>" />
+			
+			<button type="submit" class="btn"><?php echo $this->tlt('Submit')?></button>
+		</form>
+	</div>
+</div>
+		<?php 
+			$sum = 0;
+			$i = 0;
+		?>
+		<?php foreach($this->urls as $url){?>
+			<div class="span12 well">
+				<div class="row-fluid">
+					<div class="span6">
+						<div class="row-fluid">
+							<h2><?php echo $url->prize_name?></h2>
+				
+							<label><?php echo $this->tlt("Prize url").": "?></label>
+							<input type="text" class="input-xxlarge" value="<?php echo $url->url?>" />
+							<label><?php echo $this->tlt("Conversion pixel ( copy this into conversion page)").": "?></label>
+							<textarea><img src="<?php echo $this->root_url?>/conv/<?php echo $url->prize_id?>" width="1" height="1"></textarea>
+							<br />
+						</div>
+						<div class="row-fluid">
+							<h4><?php echo $this->tlt("Publishers scores").": "?></h4>
+							 
+								<span><?php echo $url->url?> - <?php echo $this->tlt("Clicks").": ".$url->clicks." | Convs: ".$url->convs?></span>
+								<br />
+							
+						</div>
+					</div>
+					<div class="span6">
+						
+						<script type="text/javascript">
+							 
+					      // Load the Visualization API and the piechart package.
+					      google.load('visualization', '1.0', {'packages':['corechart']});
+					
+				          <?php if(count($url->report)){?>
+						      // Set a callback to run when the Google Visualization API is loaded.
+						      google.setOnLoadCallback(drawChart<?php echo $i?>);
+						
+					          google.load("visualization", "1", {packages:["corechart"]});
+						      google.setOnLoadCallback(drawChart<?php echo $i?>);
+						      function drawChart<?php echo $i?>() {
+						        var data = google.visualization.arrayToDataTable([
+						          ['<?php echo $this->tlt("Date")?>', '<?php echo $this->tlt("Clicks")?>', '<?php echo $this->tlt("Conversions")?>'],
+							          <?php foreach($url->report as $segment){?>
+							          	['<?php echo $segment->date?>',  <?php echo $segment->clicks?>, <?php echo $segment->convs?>],		
+							          <?php }?>
+						        ]);
+						
+						        var options = {
+						          title: '<?php echo $this->tlt("Statistics overview")?>'
+						        };
+							        
+						       	
+						       var chart = new google.visualization.LineChart(document.getElementById('chart_div<?php echo $i?>'));
+						       chart.draw(data, options);	
+					       }
+				           <?php }?>
+						</script>
+						<div id="chart_div<?php echo $i?>" style="width:100%"></div>
+					</div>
+					
+		
+				</div>
+			</div>
+			<?php $i++;$sum += $url->clicks + $url->convs * 100;?>
+		<?php }?>
+
+<span><b><?php echo $this->tlt("Spent credits").": ".$sum. ' '. $this->tlt("credit(s)")?> </b></span>
+
+

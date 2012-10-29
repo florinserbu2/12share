@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>12share</title>
+    <!-- Le styles -->
+    <link href="<?php echo $this->static['url']?>/css/bootstrap.css" rel="stylesheet">
+    <link href="<?php echo $this->static['url']?>/css/style.css" rel="stylesheet">
+    <link href="<?php echo $this->static['url']?>/css/ui-lightness/jquery-ui-1.8.21.custom.css" rel="stylesheet">
+    
+    <style type="text/css">
+      body {
+       
+      
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+    </style>
+    <link href="<?php echo $this->static['url'] ?>/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+   
+    <script src="<?php echo $this->static['url'] ?>/js/jquery.js"></script>
+    <script src="<?php echo $this->static['url'] ?>/js/jquery-ui-1.8.21.custom.min.js"></script>
+    <script src="<?php echo $this->static['url'] ?>/js/bootstrap-min.js"></script>
+    <script src="<?php echo $this->static['url'] ?>/js/functions.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    
+
+  </head>
+
+  <body>
+
+
+  <div class="container">
+        <div class="row-fluid">        
+           
+            <div class="span3">
+            	<a href="/">
+
+                </a>
+            </div>
+      
+            
+            <div class="span3 pull-right"> 
+            	<?php if($this->user){?>
+					<h4><?php echo $this->tlt("Hello").' '. @$this->user->username?>
+					<a href="/default/auth/logout"><?php echo $this->tlt("Logout")?></a></h4>
+					<?php if(@$this->user->advertiser){?>
+						<p><?php echo $this->tlt("Selected advertiser:")." <a href='/default/advertiser-page/id/".$this->user->advertiser->id."'><b>".$this->user->advertiser->username?></b></a></p>
+					<?php }?>
+	            <?php }else{?>
+					<h4><?php echo $this->tlt("Hello visitor!")?></h4>
+	            <?php }?>
+            </div>
+             
+        </div>
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="navbar">
+                    <div class="navbar-inner">
+                        <div class="container">                        
+                                <ul class="nav" id="main-navigation">
+                                  <?php 
+                                      //unauthenticated menu
+                                      $menu = array();
+                                      //authenticated menu
+                                      if(@$this->user->role_id == 1){
+                                          $menu[$this->tlt('Dashboard')] = array('/advertiser/index');
+                                          $menu[$this->tlt('Manage campaigns')] = array('/advertiser/index/prizes');
+                                      }
+                                      if(@$this->user->role_id == 2){
+                                          $menu[$this->tlt('Dashboard')] = array('/publisher/index');
+                                          $menu[$this->tlt('Campaigns')] = array('/publisher/index/prizes');
+                                          $menu[$this->tlt('My prizes')] = array('/publisher/index/earned-prizes');
+                                      }
+                                  ?>
+		                      		<?php foreach($menu as $k => $v){?>
+		                        	      <li><a style="font-weight:bold" href="<?php echo $v[0]?>"><?php echo $k?></a></li>    
+                                    <?php }?>
+								    </ul> 
+                        </div>
+                    </div>
+                </div>
+             </div>
+        </div>
+    
+   
+      <div class="row-fluid" id="main-layout">
+		       <?php if($this->message && $this->message_class){?>
+                <div class="alert alert-<?php echo $this->message_class?>">
+                    <button class="close" data-dismiss="alert">x</button>
+                    <?php echo $this->message?>
+                </div>
+              <?php }?>
+
+              <?php echo $this->layout()->content; ?>
+      </div><!--/row-->
+     
+      <footer style="margin-top:30px">
+        <p>12share 2012</p>
+      </footer>
+
+    </div><!--/-container-->
+
+    
+   <script type="text/javascript">
+       <?php if(isset($this->js_do)){?>
+		   setTimeout(function(){<?php echo $this->js_do?>},<?php echo $this->js_do_after ? $this->js_do_after : 10?>);
+	   <?php }?>
+    </script>
+  </body>
+</html>

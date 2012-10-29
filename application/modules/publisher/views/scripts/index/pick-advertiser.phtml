@@ -1,0 +1,45 @@
+
+<div class="row-fluid">
+	<h2><?php echo $this->tlt("Chose your advertiser").":"?></h2>
+</div>
+<div class="row-fluid">
+	<?php if(count($this->list)){?>
+		<?php $i = 0;?>	
+		<div class="row-fluid">
+		<?php foreach($this->list as $advertiser) {?>
+			<?php 
+			
+			//get images
+			$manager = new Fd_Advertiser_Manager($advertiser->id);
+			$uploader = new Fd_Uploader($manager);
+			$images_url = $uploader->getUploadUrl();
+			?>
+			<?php if($i % 4 == 0){?>
+				</div><div class="row-fluid">
+			<?php }?>
+			
+				<div class="span3 well">
+				
+					<a target="_blank" class="thumbnail" href="/default/index/advertiser-page/id/<?php echo $advertiser->id?>">
+						<img src="<?php echo $this->src($images_url.'/150x150/'.@$advertiser->images[0]->file_name, '150x150', "owned-item.gif")?>"
+						 alt="" 
+						 />
+					</a>
+				
+					<a target="_blank"  href="/default/index/advertiser-page/id/<?php echo $advertiser->id?>"><h3><?php echo $advertiser->username?></h3></a>
+					<div class="row-fluid">
+					<span class="label" style="font-size:10px">
+						<?php echo $this->tlt("Prizes added")." :<b>". $advertiser->prizes_no?></b>
+					</span>
+					<a class="btn pull-right" href="/publisher/index/pick-advertiser/id/<?php echo $advertiser->id?>"><?php echo $this->tlt("Select")?></a>
+					</div>
+					
+				</div>
+				
+			
+		<?php $i++;}?>
+		</div>
+	<?php }else{?>
+		<div class="alert alert-info"><?php echo $this->tlt("No advertisers submited any prize, please wait")?></div>
+	<?php }?>
+</div>

@@ -1,0 +1,68 @@
+<div class="row-fluid">
+	<h1><?php echo $this->tlt("Hello, welcome to 12share! ")?></h1>
+	<h3><?php echo $this->tlt("Please login using the following account type:")?></h3>
+</div>
+<div class="row-fluid">
+	<div class="span6 well">
+		<h4><?php echo $this->tlt("You want to have visitors")?></h4>
+		<button class="btn btn-large btn-primary" id="adv-btn"><?php echo $this->tlt("I am an Advertiser")?></button>
+		<div class="" id="adv-login-form"  style="display:none">
+			<form action="/default/auth/index/role/1" method="post">
+
+				<div class="row-fluid">
+					<div class="span6">
+						<label for="username"><?php echo $this->tlt("Username")?></label>					
+					</div>
+					<div class="span6">
+						<input type="text" name="username" id="username"/>						
+					</div>
+				</div>
+				<div class="row-fluid">
+					<div class="span6">
+						<label for="password"><?php echo $this->tlt("Password")?></label>					
+					</div>
+					<div class="span6">
+						<input type="password" name="password" id="password"/>						
+					</div>
+				</div>
+				<div class="row-fluid">
+					<button type="submit" class="btn"><?php echo $this->tlt("Submit")?></button>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="span6 well">
+		<h4><?php echo $this->tlt("You want to earn credits and buy cool items with them")?></h4>
+		<button class="btn btn-large btn-success" id="pub-btn"><?php echo $this->tlt("I am a Publisher")?></button>
+		<div class="" id="pub-login-form" style="display:none">
+			<form action="/default/auth/index/role/1"" method="post">
+
+				<div class="row-fluid">
+					<div class="span6">
+						<label for="username"><?php echo $this->tlt("Username")?></label>					
+					</div>
+					<div class="span6">
+						<input type="text" name="username" id="username"/>						
+					</div>
+				</div>
+				<div class="row-fluid">
+					<div class="span6">
+						<label for="password"><?php echo $this->tlt("Password")?></label>					
+					</div>
+					<div class="span6">
+						<input type="password" name="password" id="password"/>						
+					</div>
+				</div>
+				<div class="row-fluid">
+					<button type="submit" class="btn"><?php echo $this->tlt("Submit")?></button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	$("#adv-btn").click(function(){$(this).hide(); $("#adv-login-form").fadeIn();});
+	$("#pub-btn").click(function(){$(this).hide(); $("#pub-login-form").fadeIn();});
+	
+</script>

@@ -1,0 +1,208 @@
+
+.pointable{
+	cursor:pointer
+}
+.feedback-button{
+	height:87px;
+	width:26px;
+	background: url("../img/feedback-button.gif") no-repeat;
+	position:fixed;
+	top:40%;
+	cursor:pointer;
+}
+#top-user-box{
+	margin-top:30px;
+	padding:10px
+}
+#location-box{
+	margin-top:20px;
+	padding:10px;
+}
+#current-location{
+	font-size:14px;
+	font-weight: bold;
+}
+#top-user-box P{
+	margin:0;
+}
+.table-form TD{
+	padding:5px
+}
+
+#facebook-register-button-container{
+	margin-top:200px
+}
+#direct-register-form-container{
+	
+}
+
+#grid-mode-browsing{
+	background: url('/img/grid-mode.png') no-repeat;
+	width: 30px;
+	height: 30px;
+	cursor:pointer;
+}
+
+#list-mode-browsing{
+	background: url('/img/list-mode.png') no-repeat;
+	width: 30px;
+	height: 30px;
+	cursor:pointer;
+}
+
+.loader{
+	width:16px;
+	height:16px;
+	background: url('/img/ajax-loader2.gif') no-repeat;
+	margin: 0 50%;
+}
+.big-loader{
+	width:50px;
+	height:50px;
+	background: url('/img/ajax-loader-big.gif') no-repeat;
+	margin: 0 50%;
+}
+.loading-typeahead{
+	background: url('/img/ajax-loader.gif') no-repeat right;
+}
+
+UL#field-error{
+	margin:0;
+}
+UL#field-error LI{
+	list-style:none;
+}
+
+FORM.table-form TD LABEL{
+	margin-top: 5px;
+}
+FORM.table-form TD{
+	vertical-align: top;
+	padding-top:3px;
+}
+
+DIV.facebook-login{
+	margin-top:3px;
+	margin-right:5px;
+	float:left;	
+	width:21px;
+	height:21px;
+	background: url('../img/fb.png') no-repeat;
+}
+
+.light-bottom-bordered{
+	border-bottom:1px solid #E8E8E8;
+}
+.green-bottom-bordered{
+	border-bottom:1px solid #c1e8c2;
+}
+.green-bordered A{
+	border:3px solid #c1e8c2;
+	border-radius: 5px;
+}
+
+A.thumbnail:focus{
+	outline:none;
+}
+
+.purple-bottom-bordered{
+	border-bottom:1px solid #e4ade1;
+}
+.light-bottom-bordered-spaced-y{
+	padding-bottom:15px;
+	border-bottom:1px solid #E8E8E8;
+}
+
+.spaced{
+	margin:15px;
+}
+.spaced-y{
+	margin: 15px 0px 15px 0px;
+}
+LABEL.required{
+	font-weight:bolder;
+}
+.purple-top-left-bg{
+	background: url('../img/purple-top-left.png') top left no-repeat;
+	
+}
+
+.green-top-left-bg{
+	background: url('../img/green-top-left.png') top left no-repeat;
+}
+.purple-top-right-bg{
+	background: url('../img/purple-top-right.png') top right no-repeat;
+	background-color: #fbecfa;
+}
+
+.green-top-right-bg{
+	background: url('../img/green-top-right.png') top right no-repeat;
+	background-color: #deedde;
+}
+
+.option-with-childs{
+	color:grey;
+	font-weight:bold;
+	font-size: 13px;
+}
+
+.small-dialog-footer-info{
+	font-size:11px;
+	padding:3px;
+	color:#363636;
+}
+
+.conversation{
+	max-height:400px;
+	overflow-y:auto;
+}
+
+.notice-counter{
+	background: none repeat scroll 0 0 red;
+    border-radius: 2px 2px 2px 2px;
+    color: #FFFFFF;
+    float: left;
+    line-height: 12px;
+    padding: 2px;
+    position: relative;
+    right: 1px;
+    top: -8px;
+}
+
+.btn-interest {
+  background-color: #5bb75b;
+  background-image: -moz-linear-gradient(top, #F095EB, #D683D2); //F095EB D683D2, 
+  background-image: -ms-linear-gradient(top, #F095EB, #D683D2);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#F095EB), to(#D683D2));
+  background-image: -webkit-linear-gradient(top, #F095EB, #D683D2);
+  background-image: -o-linear-gradient(top, #F095EB, #D683D2);
+  background-image: linear-gradient(top, #F095EB, #D683D2);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F095EB', endColorstr='#D683D2', GradientType=0);
+  border-color: #D683D2 #D683D2 #387038;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  filter: progid:dximagetransform.microsoft.gradient(enabled=false);
+}
+.btn-interest:hover,
+.btn-interest:active,
+.btn-interest.active,
+.btn-interest.disabled,
+.btn-interest[disabled] {
+  background-color: #D683D2;
+}
+.btn-interest:active,
+.btn-interest.active {
+  background-color: #408140 \9;
+}
+.btn-interest,
+.btn-interest:hover{
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  color: #ffffff;
+}
+
+.btn-group > .btn:hover, .btn-group > .btn:focus, .btn-group > .btn:active, .btn-group > .btn.active{
+	z-index:0; 
+}
+
+P.hint {font-size:9px; margin:-10px 0 0 0 ;padding:0}
+.checkbox-hint{font-size:10px; margin:-15px 0 0 15px ;padding:0}
